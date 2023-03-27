@@ -1,24 +1,20 @@
-import { useState } from 'react'
-import Header from './Header'
 import TodoList from './TodoList'
+import { TodosProvider } from './TodosContext'
 
 function App() {
-  const [todos, setTodos] = useState([
-    { id: '1', text: 'groceries' },
-    { id: '2', text: 'laundry' },
-    { id: '3', text: 'homework' },
-  ])
-
-  const deleteTodo = (id) => {
-    setTodos(todos.filter((todo) => todo.id !== id))
-  }
-
   return (
-    <div className='App'>
-      <Header />
-      <TodoList todos={todos} handleDelete={deleteTodo} />
-    </div>
+    <TodosProvider>
+      <div className='App'>
+        <TodoList />
+      </div>
+    </TodosProvider>
   )
 }
 
 export default App
+
+// [
+//   { id: '1', text: 'groceries' },
+//   { id: '2', text: 'laundry' },
+//   { id: '3', text: 'homework' },
+// ]
